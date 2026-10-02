@@ -150,6 +150,7 @@ The site does not build from Markdown.
 The site is SolidJS code under `dev/` and a Node server under `server/`.
 No test, script or build step reads a documentation file, so no documentation path is re-included.
 A Markdown change publishes no content.
+Render builds follow the same rule: `buildFilter.ignoredPaths` in `render.yaml` skips a build for a documentation-only push.
 
 The `Documentation CI` workflow (`.github/workflows/documentation.yml`) runs for `docs/**`, `doc/**`, `**/*.md` and its own file.
 It runs `bash doc/system/BUILD.sh` and fails if `git diff --exit-code -- doc` shows a difference.

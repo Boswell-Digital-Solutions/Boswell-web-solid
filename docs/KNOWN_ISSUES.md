@@ -23,5 +23,6 @@
 
 - `render.yaml` sets no `autoDeployTrigger` and no `buildFilter`. Render deploys on each push to the watched branch by default. A GitHub Actions `paths` filter cannot stop this.
 - Not verified: the Render dashboard setting. The deploy does not read Markdown.
-- Fix: add `buildFilter` `ignoredPaths` for `docs/**`, `doc/**` and `**/*.md`, or set auto-deploy to "After CI checks pass".
-- Scope: open, low severity.
+- Mitigation: `render.yaml` now sets `buildFilter.ignoredPaths` for `docs/**`, `doc/**`, `*.md` and `**/*.md`. A push that changes only those paths must not build. Any other path still builds.
+- Not observed: no documentation-only push has run since the change. Not verified: the Render service may have been made by hand in the dashboard, and then it ignores `render.yaml`. The owner must confirm that the Blueprint manages the service, or set the same filter in the dashboard.
+- Scope: mitigated in `render.yaml`, not yet observed. Low severity.
