@@ -3,6 +3,11 @@ name: Format
 on:
   push:
     branches: [main]
+    paths:
+      - '**'
+      - '!docs/**'
+      - '!doc/**'
+      - '!**/*.md'
 
 jobs:
   format:
